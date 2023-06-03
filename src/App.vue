@@ -1,32 +1,52 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar app dark>
+      <v-img alt="Vuetify Logo" class="shrink mx-auto" contain src="./assets/LOGO50A COR.png"
+        transition="scale-transition" width="100" />
+
+    </v-app-bar>
+
+    <v-main>
+      <router-view />
+    </v-main>
+
+    <v-footer paddless dark class="d-flex justify-space-between">
+      <v-card>
+        <v-card-text class="white--text text-center">
+          <strong>Docente:</strong> Adenilso da Silva Simão (<strong>adenilso@icmc.usp.br</strong>)
+        </v-card-text>
+      </v-card>
+
+      <v-card flat tile class="white--text">
+
+        <v-card-text class="white--text pt-0 text-center">
+          SSC0961 - Desenvolvimento Web e Mobile
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-text class="white--text pt-0  pb-0 text-center">
+          {{ new Date().getFullYear() }}
+        </v-card-text>
+
+      </v-card>
+
+      <v-card>
+        <v-card-text class="white--text text-center">
+          <strong>Estagiário PAE:</strong> Rodrigo Henrique Ramos (<strong>rodrigohenrique.ramos@usp.br</strong>)
+        </v-card-text>
+      </v-card>
+    </v-footer>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-nav {
-  padding: 30px;
-}
+export default {
+  name: 'App',
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+  data: () => ({
+    //
+  })
 }
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>
