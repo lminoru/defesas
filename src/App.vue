@@ -7,7 +7,9 @@
     </v-app-bar>
 
     <v-main>
-      <router-view />
+      <div class="pl-10 pr-10 pt-10 pb-10">
+        <router-view />
+      </div>
     </v-main>
 
     <v-footer paddless dark class="d-flex justify-space-between">

@@ -1,11 +1,15 @@
 <template>
   <div>
-    <v-btn :loading="loading" class="primary" @click="loadDefesas()">Load!</v-btn>
-
-    <v-text-field v-model="search" append-icon="mdi-magnify" label="Digite um nome" single-line
-      hide-details></v-text-field>
-
+    <template v-if="loading">
+      <v-dialog v-model="loading">
+        <v-card>
+          <v-progress-linear indeterminate color="primary"></v-progress-linear>
+        </v-card>
+      </v-dialog>
+    </template>
     <template v-if="defesas.length !== 0">
+      <v-text-field v-model="search" append-icon="mdi-magnify" label="Digite um nome" single-line
+        hide-details></v-text-field>
       <v-data-table :headers="headers" :items="defesas" class="elevation-1" :loading="loading" :search="search">
         <template v-slot:[`item.Data`]="{ item }">
           {{ formatDate(item.Data) }}
@@ -39,6 +43,9 @@ export default {
       sortBy: 'Data',
       sortDesc: false
     }
+  },
+  created() {
+    this.loadDefesas()
   },
   methods: {
     loadDefesas() {
