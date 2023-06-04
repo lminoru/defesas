@@ -9,7 +9,7 @@
       </v-col>
     </v-row>
     <v-row justify="center">
-      <v-btn>Acessar defesas</v-btn>
+      <v-btn @click="goToNewRoute">Acessar defesas</v-btn>
     </v-row>
 
     <v-row>
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import router from '../router'
 import CardAutor from './CardAutor.vue'
 
 export default {
@@ -49,6 +50,12 @@ export default {
         imageName: 'nicolas.png'
       }
     ]
-  })
+  }),
+
+  methods: {
+    goToNewRoute () {
+      router.push('/about') // Substitua '/nova-rota' pelo caminho da nova rota que deseja acessar
+    }
+  }
 }
 </script>
