@@ -28,7 +28,8 @@
         <v-radio v-for="p in programaOptions" :key="p.text" :label="p.text" :value="p.value"></v-radio>
       </v-radio-group>
 
-      <v-data-table :headers="headers" :items="defesas" class="elevation-1" :loading="loading" :search="filters.nome">
+      <v-data-table :headers="headers" :items="defesas" class="elevation-1" :loading="loading" :search="filters.nome"
+        single-expand show-expand :expanded.sync="expanded" item-key="Ordem">
 
         <template v-slot:[`item.Data`]="{ item }">
           {{ formatDate(item.Data) }}
@@ -36,6 +37,13 @@
         <template v-slot:[`item.Curso`]="{ item }">
           {{ formatCourse(item.Curso) }}
         </template>
+        <template v-slot:[`expanded-item`]="{ headers, item }">
+          <td :colspan="headers.length">
+            {{ item.Nome }} defendeu sua tese de {{ item.Curso }} em {{ formatDate(item.Data) }} pelo programa {{
+              item.Programa }}
+          </td>
+        </template>
+
       </v-data-table>
     </template>
   </div>
@@ -73,6 +81,7 @@ export default {
         { text: 'Data', value: 'Data', filterable: false }
       ],
       defesas: [],
+      expended: [],
       loading: false,
       filters: {
         nome: '',
