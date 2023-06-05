@@ -54,7 +54,7 @@ export default {
 
   methods: {
     goToNewRoute () {
-      router.push('/about') // Substitua '/nova-rota' pelo caminho da nova rota que deseja acessar
+      router.push('/defesas') // Substitua '/nova-rota' pelo caminho da nova rota que deseja acessar
     }
   }
 }
